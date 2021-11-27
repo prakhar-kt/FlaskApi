@@ -1,7 +1,7 @@
 from flask_restful import Resource, reqparse
 
 
-from models.movies import MovieModel
+from models.movie import MovieModel
 
 
 
@@ -14,9 +14,13 @@ class Movie(Resource):
     type=int,
     required=True,
     help="This field cannot be left blank")
-    # parser.add_argument('ratings',
-    # type=float,
-    # )
+    parser.add_argument('ratings',
+    type=float,
+    )
+    parser.add_argument('director_id',
+    type=int,
+    required=True,
+    help='Need to give the director id also')
     
     # Define a classmethod for finding a movie by name in the database
     
@@ -38,7 +42,7 @@ class Movie(Resource):
         # else we parse the request using the parser object of the class
         
         data = Movie.parser.parse_args() 
-        movie = MovieModel(name, data['year'])
+        movie = MovieModel(name, **data)
         
         try:
             movie.save_to_db()
@@ -50,7 +54,7 @@ class Movie(Resource):
     
     def delete(self,name):
 
-        movie = MovieModel.find_by_name(name)
+        movie = MovieModel.find_movie_by_name(name)
 
         if movie:
             movie.delete_from_db()
@@ -64,10 +68,11 @@ class Movie(Resource):
         movie = MovieModel.find_movie_by_name(name)
 
         if movie:
-            movie.year = movie['year']
+            movie.year = data['year']
+            movie.ratings = data['ratings']
             # movie.rating = movie['ratings']
         else:
-            movie = MovieModel(name, movie['year'])
+            movie = MovieModel(name, **data)
 
         movie.save_to_db()
         

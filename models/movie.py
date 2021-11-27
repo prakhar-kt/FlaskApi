@@ -7,14 +7,20 @@ class MovieModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     year = db.Column(db.Integer)
-    # ratings = db.Column(db.Float(precision=1))
+    ratings = db.Column(db.Float(precision=1))
 
-    def __init__(self,name,year):
-        
+    director_id = db.Column(db.Integer, db.ForeignKey('directors.id'))
+    director = db.relationship('DirectorModel')
+    
+
+    def __init__(self,name,year,ratings,director_id):
         
         self.name = name
         self.year = year
-        # self.ratings = ratings
+        self.ratings = ratings
+        self.director_id = director_id
+        
+        
 
     
 
