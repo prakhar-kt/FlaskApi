@@ -20,7 +20,7 @@ api.add_resource(Movie, '/movie/<string:name>')
 api.add_resource(MovieList, '/movies')
 api.add_resource(DirectorList,'/directors')
 
-
+db.init_app(app)
 if __name__ == '__main__':
-    db.init_app(app)
+    
     app.run(debug=True)
