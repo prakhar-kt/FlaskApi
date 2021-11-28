@@ -25,7 +25,7 @@ class MovieModel(db.Model):
     
 
     def json(self):
-        return {'name': self.name, 'year': self.year}
+        return {'name': self.name, 'year': self.year, 'ratings':self.ratings}
 
     @classmethod
     def find_movie_by_name(cls,name): 
