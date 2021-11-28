@@ -19,8 +19,7 @@ class Movie(Resource):
     )
     parser.add_argument('director_id',
     type=int,
-    required=True,
-    help='Need to give the director id also')
+    )
     
     # Define a classmethod for finding a movie by name in the database
     

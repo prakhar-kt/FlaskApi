@@ -9,9 +9,8 @@ class DirectorModel(db.Model):
     
     movies = db.relationship("MovieModel")
 
-    def __init__(self, _id, name):
+    def __init__(self,name):
         
-        self.id = _id
         self.name = name
         
         

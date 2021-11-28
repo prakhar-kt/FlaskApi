@@ -19,7 +19,7 @@ class Director(Resource):
         if DirectorModel.find_director_by_name(name):
             return {'messsage': 'Director already exists'}, 400
 
-        director = DirectorModel(id,name)
+        director = DirectorModel(name)
 
         try:
             director.save_to_db()
