@@ -20,7 +20,7 @@ The 'movies' table has columns 'name' 'year' (year of release) and 'ratings'
 #### Endpoints 
 
 READ:
-GET movies list - {{url}}/movies\n
+GET movies list - {{url}}/movies/n
 GET directors list - {{url}}/directors
 GET movie by name - {{url}}/movie/<name>
 GET director by name - {{url}}/director/<name>
