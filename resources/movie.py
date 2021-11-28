@@ -1,3 +1,5 @@
+import os,re 
+
 from flask_restful import Resource, reqparse
 
 
@@ -18,7 +20,7 @@ class Movie(Resource):
     type=float,
     )
     parser.add_argument('director_id',
-    type=int,
+    type=int
     )
     
     # Define a classmethod for finding a movie by name in the database

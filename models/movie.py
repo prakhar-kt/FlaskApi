@@ -13,12 +13,12 @@ class MovieModel(db.Model):
     director = db.relationship('DirectorModel')
     
 
-    def __init__(self,name,year,ratings,director_id):
+    def __init__(self,name,year,ratings,director):
         
         self.name = name
         self.year = year
         self.ratings = ratings
-        self.director_id = director_id
+        self.director = director
         
         
 
